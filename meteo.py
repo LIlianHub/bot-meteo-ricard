@@ -1,7 +1,7 @@
 from meteofrance_api import MeteoFranceClient
 import os
 
-os.chdir("/home/lilian/Bureau/Python/Twitter/bot-twitter-ricard")
+os.chdir("/home/lilian/Bureau/Python/Twitter/bot-meteo-ricard")
 
 def RecupMeteo():
     ville_ensoleille = set()

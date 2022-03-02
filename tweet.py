@@ -5,7 +5,7 @@ import os.path as op
 
 #Outil
 NOM_MOIS = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aôut", "Septembre", "Octobre", "Novembre", "Décembre"]
-os.chdir("/home/lilian/Bureau/Python/Twitter/bot-twitter-ricard")
+os.chdir("/home/lilian/Bureau/Python/Twitter/bot-meteo-ricard")
 
 def Authentification_twitter():
     if op.isfile("cache/id"):
