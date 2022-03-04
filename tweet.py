@@ -33,7 +33,7 @@ def Authentification_twitter():
     else:
         return 0
 
-def EnvoieTweet(API, jour_ensoileille, jour_eclaircie):
+def EnvoieTweet(api, jour_ensoileille, jour_eclaircie):
     date_du_jour = datetime.date.today()
     print(f"tweet du {date_du_jour}")
 
@@ -64,7 +64,7 @@ def EnvoieTweet(API, jour_ensoileille, jour_eclaircie):
         message_court += "⬇️"
 
         #on recup id du tweet qu'on vient d'envoyer
-        tweet = API.update_status(status = message_court)
+        tweet = api.update_status(status = message_court)
         id_a_rep = tweet.id
 
         # construction du thread !
@@ -82,11 +82,11 @@ def EnvoieTweet(API, jour_ensoileille, jour_eclaircie):
                 message_court += "⬇️"
                 
             #on tweet en réponse au précédant tweet
-            tweet = API.update_status(status = message_court, in_reply_to_status_id = id_a_rep)
+            tweet = api.update_status(status = message_court, in_reply_to_status_id = id_a_rep)
             id_a_rep = tweet.id
 
     else:
-        API.update_status(status = message)
+        api.update_status(status = message)
 
 
 
