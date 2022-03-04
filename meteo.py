@@ -34,7 +34,7 @@ def RecupMeteo():
         
         # L'info importante
         info = ma_position_prevision_par_jour[0]["weather12H"]["desc"]
-
+        
         if(info == "Ensoleillé"):
             ville_ensoleille.add(ville)
             print(f"Ville ensoleillée detéctée: {ville}")
@@ -42,6 +42,8 @@ def RecupMeteo():
         elif(info == "Eclaircies"):
             ville_eclairci.add(ville)
             print(f"Ville éclaircie detéctée: {ville}")
+        else:
+            ville_eclairci.add(ville)
     
     return ville_ensoleille, ville_eclairci
 

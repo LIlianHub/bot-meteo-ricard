@@ -6,6 +6,8 @@ import os.path as op
 #Outil
 NOM_MOIS = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aôut", "Septembre", "Octobre", "Novembre", "Décembre"]
 os.chdir("/home/lilian/Bureau/Python/Twitter/bot-meteo-ricard")
+#limite de 270 pour être large
+MAX_SIZE_TWEET = 270
 
 def Authentification_twitter():
     if op.isfile("cache/id"):
@@ -41,8 +43,47 @@ def EnvoieTweet(API, jour_ensoileille, jour_eclaircie):
     
     for ville in jour_eclaircie:
         message += "⛅ " + ville + "\n"
-    
-    API.update_status(status = message)
+
+    # Si le tweet est trop long:
+    if(len(message) > MAX_SIZE_TWEET):
+        # on split par ligne
+        message_separe = message.split("\n")
+
+        # Premier tweet
+        message_court = ""
+        parcours = 0
+
+        # 
+        while((len(message_court) + len(message_separe[parcours])) < MAX_SIZE_TWEET):
+            message_court += message_separe[parcours] + "\n"
+            parcours += 1
+
+        message_court += "⬇️"
+        #id du tweet qu'on vient d'envoyer
+        tweet = API.update_status(status = message_court)
+        id_a_rep = tweet.id
+
+        # construction du thread !
+        # Tant qu'on a pas tout ecrit
+        while(parcours < len(message_separe)):
+            # Obligé ce mettre l'@ de la personne a qui ont repond en l'occurence ici, nous même
+            message_court = "@BotRicard"
+            # tant qu'on a pas tout ecrit ou que le sous message est trop long
+            while((parcours < len(message_separe)) and ((len(message_court) + len(message_separe[parcours])) < MAX_SIZE_TWEET)):
+                message_court += message_separe[parcours] + "\n"
+                parcours += 1
+
+            #Si jamais il y a une suite on l'informe avec une fleche vers le bas
+            if(parcours < len(message_separe)):
+                message_court += "⬇️"
+                
+            #on tweet en réponse au précédant tweet
+            tweet = API.update_status(status = message_court, in_reply_to_status_id = id_a_rep)
+            id_a_rep = tweet.id
+
+    else:
+        #API.update_status(status = message)
+        print("taille ok")
 
 
 
