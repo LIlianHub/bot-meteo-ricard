@@ -6,7 +6,7 @@ import os.path as op
 #Outil
 NOM_MOIS = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aôut", "Septembre", "Octobre", "Novembre", "Décembre"]
 os.chdir("/home/lilian/Bureau/Python/Twitter/bot-meteo-ricard")
-#limite de 270 pour être large
+#limite de 270 au lieu de 280 pour être large
 MAX_SIZE_TWEET = 270
 
 def Authentification_twitter():
@@ -35,6 +35,8 @@ def Authentification_twitter():
 
 def EnvoieTweet(API, jour_ensoileille, jour_eclaircie):
     date_du_jour = datetime.date.today()
+    print(f"tweet du {date_du_jour}")
+
     message = "Nous somme le " + str(date_du_jour.day) + " " + NOM_MOIS[int(date_du_jour.month) - 1] + " " + str(date_du_jour.year) + ",\n"
     message += "Aujourd'hui les villes où il fera bon de prendre un Ricard en terrasse au soleil sont: \n"
 
@@ -53,13 +55,15 @@ def EnvoieTweet(API, jour_ensoileille, jour_eclaircie):
         message_court = ""
         parcours = 0
 
-        # 
+        # on remplit le premier tweet
         while((len(message_court) + len(message_separe[parcours])) < MAX_SIZE_TWEET):
             message_court += message_separe[parcours] + "\n"
             parcours += 1
 
+        #fleche vers le bas, pour informer de la suite
         message_court += "⬇️"
-        #id du tweet qu'on vient d'envoyer
+
+        #on recup id du tweet qu'on vient d'envoyer
         tweet = API.update_status(status = message_court)
         id_a_rep = tweet.id
 
@@ -82,8 +86,7 @@ def EnvoieTweet(API, jour_ensoileille, jour_eclaircie):
             id_a_rep = tweet.id
 
     else:
-        #API.update_status(status = message)
-        print("taille ok")
+        API.update_status(status = message)
 
 
 

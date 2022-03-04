@@ -42,8 +42,6 @@ def RecupMeteo():
         elif(info == "Eclaircies"):
             ville_eclairci.add(ville)
             print(f"Ville éclaircie detéctée: {ville}")
-        else:
-            ville_eclairci.add(ville)
     
     return ville_ensoleille, ville_eclairci
 
