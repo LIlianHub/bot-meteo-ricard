@@ -15,6 +15,9 @@ def RecupMeteo():
     for ville in liste_ville:
         # On recherche la ville avec son nom
         liste_position = client.search_places(ville)
+        # Renvoie un tableau avec toutes les villes qui match avec le nom
+        # La ville dans la case 0 est celle qui ressemble le plus on
+        # la prend
         ma_position = liste_position[0]
 
         # Fetch weather forecast for the location
