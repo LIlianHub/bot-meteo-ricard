@@ -45,7 +45,7 @@ def EnvoieTweet(api, jour_ensoileille, jour_eclaircie):
     
     for ville in jour_eclaircie:
         message += "⛅ " + ville + "\n"
-
+    
     # Si le tweet est trop long:
     if(len(message) > MAX_SIZE_TWEET):
         # on split par ligne
@@ -87,13 +87,3 @@ def EnvoieTweet(api, jour_ensoileille, jour_eclaircie):
 
     else:
         api.update_status(status = message)
-
-
-
-
-    
-    
-
-
-
-

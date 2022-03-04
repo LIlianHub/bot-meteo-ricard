@@ -46,9 +46,8 @@ def RecupMeteo():
             ville_eclairci.add(ville)
             print(f"Ville éclaircie detéctée: {ville}")
     
-    return ville_ensoleille, ville_eclairci
+    return sorted(ville_ensoleille), sorted(ville_eclairci)
 
-            
 
 def RecupVille():
     # Renvoie un ensemble avec le nom des villes dans le fichier
