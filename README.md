@@ -6,7 +6,7 @@ Bot twitter qui permet de chercher automatiquement via l'API de MétéoFrance la
 Si la météo est propice à boire un Ricard (grand soleil ou soleil timide derrière des nuages) alors cette ville apparaitra dans un tweet
 posté de manière hebdomadaire à 10h !
 
-En l'occurence voici le lien de mon bot: https://twitter.com/BotRicard
+En l'occurence voici le lien de mon bot: https://twitter.com/Meteo_du_Ricard
 
 ## Pré-requis
 
