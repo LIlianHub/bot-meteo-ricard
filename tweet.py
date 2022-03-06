@@ -6,8 +6,8 @@ import os.path as op
 #Outil
 NOM_MOIS = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aôut", "Septembre", "Octobre", "Novembre", "Décembre"]
 os.chdir("/home/lilian/Bureau/Python/Twitter/bot-meteo-ricard")
-#limite de 270 au lieu de 280 pour être large
-MAX_SIZE_TWEET = 270
+#limite de 265 au lieu de 280 pour être large
+MAX_SIZE_TWEET = 265
 
 def Authentification_twitter():
     if op.isfile("cache/id"):
@@ -18,7 +18,7 @@ def Authentification_twitter():
         consumer_key = consumer_key.rstrip()
         consumer_secret = fichier.readline()
         consumer_secret = consumer_secret.rstrip()
-        # le access_token est le token de l'application twitter que nous avons créée précédement
+        # le access_token est le token de l'application twitter 
         access_token = fichier.readline()
         access_token = access_token.rstrip()
         access_token_secret = fichier.readline()

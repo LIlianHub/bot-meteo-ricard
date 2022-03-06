@@ -20,8 +20,9 @@ def RecupMeteo():
         # la prend
         ma_position = liste_position[0]
 
-        # Fetch weather forecast for the location
+        # On cherche la meteo de cette ville avec l'API meteo france
         ma_position_prevision = client.get_forecast_for_place(ma_position)
+        # On recupere la meteo par jour de cette ville
         ma_position_prevision_par_jour = ma_position_prevision.daily_forecast
 
         # chaque case de la liste ma_position_prevision_par_jour
@@ -46,6 +47,7 @@ def RecupMeteo():
             ville_eclairci.add(ville)
             print(f"Ville éclaircie detéctée: {ville}")
     
+    #On retourne les listes des villes triées par ordre alphabétique
     return sorted(ville_ensoleille), sorted(ville_eclairci)
 
 
