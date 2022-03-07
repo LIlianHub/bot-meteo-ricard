@@ -71,7 +71,7 @@ def EnvoieTweet(api, jour_ensoileille, jour_eclaircie):
         # Tant qu'on a pas tout ecrit
         while(parcours < len(message_separe)):
             # Obligé ce mettre l'@ de la personne a qui ont repond en l'occurence ici, nous même
-            message_court = "@BotRicard"
+            message_court = "@Meteo_du_Ricard"
             # tant qu'on a pas tout ecrit ou que le sous message est trop long
             while((parcours < len(message_separe)) and ((len(message_court) + len(message_separe[parcours])) < MAX_SIZE_TWEET)):
                 message_court += message_separe[parcours] + "\n"
