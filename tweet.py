@@ -37,7 +37,7 @@ def EnvoieTweet(api, jour_ensoileille, jour_eclaircie):
     date_du_jour = datetime.date.today()
     print(f"tweet du {date_du_jour}")
 
-    message = "Nous somme le " + str(date_du_jour.day) + " " + NOM_MOIS[int(date_du_jour.month) - 1] + " " + str(date_du_jour.year) + ",\n"
+    message = "Nous sommes le " + str(date_du_jour.day) + " " + NOM_MOIS[int(date_du_jour.month) - 1] + " " + str(date_du_jour.year) + ",\n"
     message += "Aujourd'hui les villes où il fera bon de prendre un Ricard en terrasse au soleil sont: \n"
 
     for ville in jour_ensoileille:
