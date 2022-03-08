@@ -36,16 +36,21 @@ def RecupMeteo():
                 print("l'élément de clé", cle, "vaut", valeur)
             print(10*"-")"""
         
-        # L'info importante
-        info = ma_position_prevision_par_jour[0]["weather12H"]["desc"]
-        
-        if(info == "Ensoleillé"):
-            ville_ensoleille.add(ville)
-            print(f"Ville ensoleillée detéctée: {ville}")
-            
-        elif(info == "Eclaircies"):
-            ville_eclairci.add(ville)
-            print(f"Ville éclaircie detéctée: {ville}")
+        # info importante
+        # temps
+        info_meteo = ma_position_prevision_par_jour[0]["weather12H"]["desc"]
+        #temperature max
+        info_temp = ma_position_prevision_par_jour[0]["T"]["max"]
+
+        #temperature >= 13 degrés
+        if(info_temp >= 13):
+            if(info_meteo == "Ensoleillé"):
+                ville_ensoleille.add(ville)
+                print(f"Ville ensoleillée detéctée: {ville}")
+                
+            elif(info_meteo == "Eclaircies" or info_meteo == "Ciel voilé"):
+                ville_eclairci.add(ville)
+                print(f"Ville éclaircie detéctée: {ville}")
     
     #On retourne les listes des villes triées par ordre alphabétique
     return sorted(ville_ensoleille), sorted(ville_eclairci)
