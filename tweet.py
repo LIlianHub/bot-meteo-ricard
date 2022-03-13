@@ -38,13 +38,21 @@ def EnvoieTweet(api, jour_ensoileille, jour_eclaircie):
     print(f"tweet du {date_du_jour}")
 
     message = "Nous sommes le " + str(date_du_jour.day) + " " + NOM_MOIS[int(date_du_jour.month) - 1] + " " + str(date_du_jour.year) + ",\n"
-    message += "Aujourd'hui les villes où il fera bon de prendre un Ricard en terrasse au soleil sont: \n"
 
-    for ville in jour_ensoileille:
-        message += "☀️ " + ville + "\n"
+    # Si il y a aucune ville qui fonctionne
+    if(len(jour_eclaircie) == 0 and len(jour_ensoileille) == 0):
+        message += "Aujourd'hui est une triste journée: aucune ville est propice pour boire un Ricard en terrasse ... 😔\n"
+        message += "Mais rien ne vous empêche de le boire à la maison ! 🏠"
     
-    for ville in jour_eclaircie:
-        message += "⛅ " + ville + "\n"
+    #Si il y a des villes
+    else:
+        message += "Aujourd'hui les villes où il fera bon de prendre un Ricard en terrasse au soleil sont: \n"
+
+        for ville in jour_ensoileille:
+            message += "☀️ " + ville + "\n"
+        
+        for ville in jour_eclaircie:
+            message += "⛅ " + ville + "\n"
     
     # Si le tweet est trop long:
     if(len(message) > MAX_SIZE_TWEET):
